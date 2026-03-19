@@ -1,4 +1,4 @@
 streamlit>=1.20
 neo4j>=5.0
-streamlit-agraph>=0.2.0
+streamlit-agraph==0.0.45
 pandas>=2.0
