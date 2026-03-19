@@ -6,25 +6,14 @@ import streamlit as st
 from neo4j import GraphDatabase
 from streamlit_agraph import agraph, Node, Edge, Config
 
+@st.cache_resource
+def get_driver():
+    return GraphDatabase.driver(
+        st.secrets["NEO4J_URI"],
+        auth=(st.secrets["NEO4J_USERNAME"], st.secrets["NEO4J_PASSWORD"])
+    )
 
-# load_status = dotenv.load_dotenv("Neo4j-eedbb37c-Created-2026-03-08.txt")
-# if load_status is False:
-#     raise RuntimeError('Environment variables not loaded.')
-
-# URI = os.getenv("NEO4J_URI")
-# AUTH = (os.getenv("NEO4J_USERNAME"), os.getenv("NEO4J_PASSWORD"))
-
-URI = st.secrets["NEO4J_URI"]
-AUTH = (
-    st.secrets["NEO4J_USERNAME"],
-    st.secrets["NEO4J_PASSWORD"]
-)
-
-with GraphDatabase.driver(URI, auth=AUTH) as driver:
-    driver.verify_connectivity()
-    print("Connection established.")
-
-driver = GraphDatabase.driver(URI, auth=AUTH)
+driver = get_driver()
 
 
 # ---------------------------
