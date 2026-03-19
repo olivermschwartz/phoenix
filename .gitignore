@@ -1,0 +1,63 @@
+# ----------------------
+# Data files
+# ----------------------
+*.csv
+*.tsv
+*.xlsx
+*.json
+
+# ----------------------
+# Jupyter notebooks
+# ----------------------
+*.ipynb
+.ipynb_checkpoints/
+
+# ----------------------
+# Python cache
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ----------------------
+# Virtual environments
+# ----------------------
+venv/
+.env/
+.venv/
+env/
+
+# ----------------------
+# Streamlit secrets
+# ----------------------
+.streamlit/secrets.toml
+
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Logs
+# ----------------------
+*.log
+
+# ----------------------
+# Build / packaging
+# ----------------------
+build/
+dist/
+*.egg-info/
+
+# ----------------------
+# IDE files
+# ----------------------
+.vscode/
+.idea/
+
+# ----------------------
+# Local data directories
+# ----------------------
+data/
+datasets/
