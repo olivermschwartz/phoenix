@@ -5,3 +5,8 @@ streamlit-agraph>=0.3.8
 neo4j_viz>=0.3.7
 palettable>=3.3.0
 pydantic>=2.12.2
+rich==14.3.3
+markdown-it-py==4.0.0
+pygments==2.19.2
+mdurl==0.1.2
+pip>=26.0.1
