@@ -4,7 +4,6 @@ import time
 import pandas as pd
 import streamlit as st
 from neo4j import GraphDatabase
-from streamlit_agraph import agraph, Node, Edge, Config
 from path_gen import generate_suggested_path
 import tempfile
 import streamlit.components.v1 as components
