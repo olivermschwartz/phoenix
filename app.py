@@ -56,7 +56,7 @@ if "history" not in st.session_state:
         "ts": 0.0
     },{
         "name": "Entrepreneurship and Finance Concentrations",
-        "query": sample_query_econ_and_finance,
+        "query": sample_query_entr_and_finance,
         "nodes": 86,
         "relationships": 104,
         "ts": 0.0
