@@ -40,7 +40,7 @@ MATCH (n)-[r:flmb_requirement]->(b)
 RETURN n, r, b
 """.strip() 
 
-sample_query_econ_and_finance = """
+sample_query_entr_and_finance = """
 MATCH path = (c:concentration)-[:INCLUDE*]->(p:Courses)
 WHERE c.Concentration = "Finance" OR c.Concentration = "Entrepreneurship"
 OPTIONAL MATCH prereqPath = (p)<-[:UNLOCKS*]-(pre:Courses)
@@ -55,7 +55,7 @@ if "history" not in st.session_state:
         "relationships": 70,
         "ts": 0.0
     },{
-        "name": "Econ and Finance Concentrations",
+        "name": "Entrepreneurship and Finance Concentrations",
         "query": sample_query_econ_and_finance,
         "nodes": 86,
         "relationships": 104,
@@ -137,7 +137,7 @@ with tab1:
         To learn more about Cypher queries, refer to the 
         [Neo4j documentation](https://neo4j.com/product/cypher-graph-query-language/).
 
-        Sample queries to show FLMB requirements or the overlap between economics and finance concentrations can be found in query history. 
+        Sample queries to show FLMB requirements or the overlap between entrepreneurship and finance concentrations can be found in query history. 
     """
     )
     query = st.sidebar.text_area("Enter Cypher Query", default_query, height=200)
