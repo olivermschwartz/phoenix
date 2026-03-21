@@ -133,9 +133,12 @@ with tab1:
     """.strip()
 
     # --- Sidebar: Cypher Query ---
-    st.sidebar.write(
-        "To learn more about Cypher queries, refer to the "
-        "[Neo4j documentation](https://neo4j.com/product/cypher-graph-query-language/)"
+    st.sidebar.write("""
+        To learn more about Cypher queries, refer to the 
+        [Neo4j documentation](https://neo4j.com/product/cypher-graph-query-language/).
+
+        Sample queries to show FLMB requirements or the overlap between economics and finance concentrations can be found in query history. 
+    """
     )
     query = st.sidebar.text_area("Enter Cypher Query", default_query, height=200)
 
@@ -290,7 +293,7 @@ with tab1:
         except Exception as e:
             st.error(f"Failed to render graph: {e}")
     else:
-        st.caption("Run a Cypher query to visualize nodes and relationships.")
+        st.caption("")
     # ---------------------------
 # TAB 2 — Chart My Path
 # ---------------------------
