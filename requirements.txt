@@ -1,4 +1,16 @@
-streamlit>=1.20
-neo4j>=5.0
-streamlit-agraph==0.0.45
+# Core
+streamlit>=1.24         # newer version for 3.11 compatibility
 pandas>=2.0
+
+# Neo4j
+neo4j>=5.14             # ensure recent driver
+
+# Graph visualization
+streamlit-agraph>=0.3.8 # newer than 0.0.45, compatible with Python 3.11
+neo4j_viz>=0.3.7        # required for from_neo4j
+
+# Color palettes
+palettable>=3.3.0
+
+# Pydantic 2 is required by neo4j_viz
+pydantic>=2.12.2
