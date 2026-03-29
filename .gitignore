@@ -55,6 +55,7 @@ dist/
 # ----------------------
 .vscode/
 .idea/
+env.txt
 
 # ----------------------
 # Local data directories

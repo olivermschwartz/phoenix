@@ -4,7 +4,7 @@ import time
 import pandas as pd
 import streamlit as st
 from neo4j import GraphDatabase
-from path_gen import generate_suggested_path
+# from path_gen import generate_suggested_path
 import tempfile
 import streamlit.components.v1 as components
 from neo4j_viz.neo4j import from_neo4j
@@ -26,12 +26,12 @@ def get_driver():
 driver = get_driver()
 
 @st.cache_data
-def load_concentrations(csv_path="concentrations.csv"):
+def load_concentrations(csv_path="../data/concentrations.csv"):
     df = pd.read_csv(csv_path)
     return df["Concentration"].dropna().tolist()
 
 @st.cache_data
-def load_courses(csv_path="courses.csv"):
+def load_courses(csv_path="../data/courses.csv"):
     df = pd.read_csv(csv_path)
     return df["course_name"].dropna().tolist()
 
@@ -294,7 +294,13 @@ with tab1:
             st.error(f"Failed to render graph: {e}")
     else:
         st.caption("")
+
     # ---------------------------
+# TAB 2 — Chart My Path
+# ---------------------------
+import ortools.sat.python.cp_model as cp
+
+# ---------------------------
 # TAB 2 — Chart My Path
 # ---------------------------
 with tab2:
@@ -302,18 +308,132 @@ with tab2:
     st.title("Chart My Path")
     st.caption("Plan the sequence of courses for your Booth journey.")
 
-    st.info("Path planning features coming soon.")
-
-    # Example placeholder UI
+    # --- Sidebar / UI Inputs ---
     concentrations = st.multiselect(
         "Select your concentrations",
-        load_concentrations(),
+        load_concentrations(),  # loads from ../data/concentrations.csv
     )
-    
+
     selected_courses = st.multiselect(
         "Courses you've already taken",
-        load_courses(),
+        load_courses(csv_path="../data/courses.csv"),
+    )
+
+    n_future_courses = st.number_input(
+        "Max number of future courses to plan",
+        min_value=1,
+        max_value=20,
+        value=10,
+        step=1,
     )
 
     if st.button("Generate Suggested Path"):
-        generate_suggested_path(concentrations, selected_courses, driver)
+
+        if not concentrations:
+            st.warning("Please select at least one concentration.")
+        else:
+
+            import pandas as pd
+            import uuid
+
+            def generate_suggested_path(concentrations, taken_courses, driver, max_courses=10):
+                """
+                Builds a suggested sequence of courses in Neo4j with all course properties.
+                Uses temporary nodes for visualization.
+                """
+                temp_label = f"SuggestedCourse_{uuid.uuid4().hex[:6]}"
+
+                # --- Load CSVs ---
+                courses_df = pd.read_csv("../data/courses.csv")  # all course info
+                predictions_df = pd.read_csv("../pred/class_term_pred.csv")  # optional predicted terms
+
+                # --- Query Neo4j for candidate courses ---
+                # Matches courses under selected concentrations
+                conc_query = """
+                MATCH (c:concentration)-[:INCLUDE*]->(course:Courses)
+                WHERE c.Concentration IN $concentrations
+                RETURN DISTINCT course
+                """
+                with driver.session() as session:
+                    result = session.run(conc_query, {"concentrations": concentrations})
+                    candidate_courses = [record["course"]["course_name"] for record in result]
+
+                # Exclude courses already taken
+                candidate_courses = [c for c in candidate_courses if c not in taken_courses]
+
+                if not candidate_courses:
+                    st.info("No remaining courses to plan for the selected concentrations.")
+                    return None
+
+                # Limit to max_courses
+                candidate_courses = candidate_courses[:max_courses]
+
+                # --- Create temporary nodes in Neo4j preserving all properties ---
+                with driver.session() as session:
+                    for seq, course_name in enumerate(candidate_courses):
+                        # Get all course properties from CSV
+                        course_props = courses_df[courses_df["course_name"] == course_name].iloc[0].dropna().to_dict()
+                        course_props["seq"] = seq  # add sequence property
+                        prop_str = ", ".join(f"{k}: ${k}" for k in course_props.keys())
+                        session.run(f"CREATE (n:{temp_label} {{{prop_str}}})", course_props)
+
+                    # Create NEXT relationships for ordering
+                    for i in range(len(candidate_courses) - 1):
+                        session.run(
+                            f"""
+                            MATCH (a:{temp_label} {{seq: $i}}),
+                                  (b:{temp_label} {{seq: $j}})
+                            CREATE (a)-[:NEXT]->(b)
+                            """,
+                            {"i": i, "j": i + 1},
+                        )
+
+                # --- Query temporary path graph ---
+                path_query = f"""
+                MATCH (n:{temp_label})-[r:NEXT*]->(m:{temp_label})
+                RETURN n,r,m
+                """
+                with driver.session() as session:
+                    result = session.run(path_query)
+                    graph = result.graph()
+
+                # --- Cleanup temporary nodes ---
+                cleanup_query = f"MATCH (n:{temp_label}) DETACH DELETE n"
+                with driver.session() as session:
+                    session.run(cleanup_query)
+
+                return graph
+
+            # --- Generate and render ---
+            try:
+                graph = generate_suggested_path(
+                    concentrations, selected_courses, driver, max_courses=n_future_courses
+                )
+
+                if graph and graph.nodes:
+                    VG = from_neo4j(graph)
+
+                    VG.color_nodes(
+                        field="caption",
+                        colors=[
+                            "#FF7F7F",  # pale red
+                            "#7FFFD4",  # aquamarine
+                            "#FFD700",  # gold
+                            "#9370DB"   # medium purple
+                        ],
+                        color_space=ColorSpace.DISCRETE
+                    )
+
+                    html_obj = VG.render(
+                        layout="forcedirected",
+                        width="100%",
+                        height="700px",
+                    )
+                    html_content = html_obj.data if hasattr(html_obj, "data") else html_obj
+                    html_content = html_content.replace("<body>", '<body style="background-color:#000000;">')
+                    components.html(html_content, height=700, width="100%", scrolling=True)
+                else:
+                    st.info("No suggested path could be generated.")
+
+            except Exception as e:
+                st.error(f"Failed to generate suggested path: {e}")
