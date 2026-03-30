@@ -25,15 +25,18 @@ def get_driver():
     )
 
 driver = get_driver()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @st.cache_data
-def load_concentrations(csv_path="../data/concentrations.csv"):
-    df = pd.read_csv(csv_path)
+def load_concentrations():
+    path = os.path.join(BASE_DIR, "../data/concentrations.csv")
+    df = pd.read_csv(path)
     return df["Concentration"].dropna().tolist()
 
 @st.cache_data
-def load_courses(csv_path="../data/courses.csv"):
-    df = pd.read_csv(csv_path)
+def load_courses():
+    path = os.path.join(BASE_DIR, "../data/courses.csv")
+    df = pd.read_csv(path)
     return df["course_name"].dropna().tolist()
 
 sample_query_flmb_requirements = """
@@ -368,7 +371,7 @@ else:
 
         selected_courses = st.multiselect(
             "Courses you've already taken",
-            load_courses(csv_path="../data/courses.csv"),
+            load_courses(),
         )
 
         n_future_courses = st.number_input(
