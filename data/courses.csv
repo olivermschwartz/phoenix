@@ -1,0 +1,294 @@
+course_number,course_name,terms_offered,avg_hours_of_work,max_hours_of_work,min_hours_of_work,avg_recommendation
+33501,International Commercial Policy,"Autumn 2021,Spring 2023,Spring 2025",4.0,4.6,3.4,3.8
+40206,Healthcare Business Analytics,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025",7.0,8.0,5.6,4.0
+34302,Entrepreneurship through Acquisition,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",4.0,4.6,2.6,4.7
+34111,Entrepreneurial Selling,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022",4.7,5.5,4.1,4.4
+36106,Managerial Decision Modeling,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2024,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",6.6,15.1,4.1,4.1
+30000,Financial Accounting,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",5.2,11.9,3.3,4.3
+37101,Consumer Behavior,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2024,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",3.5,8.7,1.9,4.1
+36110,Application Development,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2021,Summer 2022,Summer 2023,Summer 2024,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2025,Winter 2025",8.5,16.3,5.7,4.6
+35001,Introductory Finance,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Spring 2022,Winter 2022",5.0,6.9,4.1,3.8
+35201,Cases in Financial Management,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2022,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2021,Summer 2021,Summer 2022,Winter 2021,Winter 2021,Winter 2022,Winter 2023,Winter 2025",5.8,9.7,4.5,4.6
+34102,New Venture Strategy,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2021,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025",3.9,5.8,2.9,4.4
+40000,Operations Management: Business Process Fundamentals,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",4.3,6.8,3.1,4.2
+35200,Corporation Finance,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",4.8,10.4,2.8,4.1
+31401,Interpersonal Dynamics,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",4.6,6.7,3.4,4.8
+30116,Accounting and Financial Analysis,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Winter 2021",4.8,7.6,3.2,4.2
+31402,Leadership Practicum,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Spring 2021,Spring 2022,Spring 2023,Spring 2024,Summer 2025,Winter 2021,Winter 2022,Winter 2023,Winter 2025",3.0,4.2,2.3,4.4
+34901,Asset Pricing I,"Autumn 2021,Autumn 2021,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",18.6,21.2,15.0,4.3
+35100,Financial Instruments,"Autumn 2021,Autumn 2021,Winter 2024,Winter 2025",9.0,13.4,7.3,3.6
+42001,Competitive Strategy,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2023,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",3.9,6.0,2.6,4.1
+40101,Supply Chain Strategy and Practice,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Winter 2021,Winter 2021,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",4.0,6.2,2.8,4.2
+34903,Corporate Finance I,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2024",16.0,17.7,14.4,4.5
+37000,Marketing Strategy,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025",4.5,7.0,2.7,4.2
+35101,International Macroeconomics and Trade,"Autumn 2021,Autumn 2024,Autumn 2024",8.0,10.0,6.1,4.2
+33001,Microeconomics,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",4.5,13.2,2.7,4.0
+30118,Taxes and Business Strategy,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2025,Winter 2024,Winter 2024,Winter 2025,Winter 2025",4.4,5.4,3.4,4.5
+41100,Applied Regression Analysis,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",6.0,10.3,4.1,4.1
+42710,Social Impact Lab,"Autumn 2021,Autumn 2021,Spring 2021,Spring 2022,Spring 2024,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",6.2,11.4,4.3,4.0
+41301,"Statistical Insight into Marketing, Consulting, and Entrepreneurship","Autumn 2021,Autumn 2021,Autumn 2022,Summer 2021,Summer 2022",3.6,4.0,3.2,3.6
+38123,Leadership Capital,"Autumn 2021,Autumn 2021,Summer 2021,Summer 2021",3.1,3.8,2.5,4.2
+38125,Leadership at the Movies,"Autumn 2021,Autumn 2021",3.6,3.7,3.4,4.6
+34715,Hacking For Defense,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Winter 2024,Winter 2024,Winter 2025,Winter 2025",11.9,12.9,10.7,4.0
+42125,Social Sector Strategy and Structure,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Winter 2021,Winter 2021",4.2,4.7,3.6,4.2
+38002,Managerial Decision Making,"Autumn 2021,Autumn 2021,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2023,Summer 2023,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2025,Winter 2025",3.1,4.8,2.0,3.7
+35219,Chinese Economy and Financial Markets,"Autumn 2021,Autumn 2022,Spring 2021",5.5,6.6,4.8,4.5
+35000,Investments,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",5.1,9.0,2.8,3.9
+42127,"Pivot for Success - Hone the Vision, Shift the Strategy, Make the Right Moves in Today's Marketplace","Autumn 2021,Autumn 2022,Spring 2022,Spring 2023,Spring 2024",2.5,3.2,1.6,2.7
+33040,Macroeconomics,"Autumn 2021,Autumn 2021,Autumn 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Summer 2021,Summer 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022",5.0,7.0,3.4,4.0
+42126,Arts Leadership: Exemplary is Not Enough,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025",2.9,3.1,2.8,4.6
+41000,Business Statistics,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",3.9,8.9,2.0,3.6
+41901,Probability and Statistics,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025",4.9,6.2,3.4,3.8
+33914,Topics Information Economics,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025",7.1,12.5,3.8,4.8
+34101,Entrepreneurial Finance and Private Equity,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2021,Summer 2022,Summer 2023,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",7.3,11.5,4.2,4.4
+32100,Data Analysis with R and Python,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2024,Autumn 2024,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Winter 2022,Winter 2023,Winter 2024,Winter 2024,Winter 2024",4.3,6.2,3.2,4.3
+39101,Technology Strategy,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Winter 2021",4.5,5.3,3.8,4.1
+30903,Topics in Empirical Accounting Research,"Autumn 2021,Winter 2021",11.0,13.0,9.0,4.8
+38103,Strategies and Processes of Negotiation,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",3.1,5.4,2.2,4.6
+38001,Managing in Organizations,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Summer 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025",3.9,19.3,2.4,3.9
+34106,Commercializing Innovation: Tools to Research and Analyze Private Enterprises,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025",9.1,11.8,7.5,4.5
+37208,Selling and Sales Management,Autumn 2021,2.9,2.9,2.9,3.8
+37304,Digital and Algorithmic Marketing,"Autumn 2021,Winter 2021",4.4,4.8,4.1,3.6
+37301,Digital Marketing,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025",3.7,4.3,3.2,4.4
+37703,Digital Marketing and MarTech Lab,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025",6.1,6.7,5.6,4.2
+42121,Merger & Acquisition Strategy,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025,Winter 2021,Winter 2022,Winter 2023,Winter 2024,Winter 2025",5.5,6.5,5.0,4.7
+33101,Advanced Microeconomic Analysis,"Autumn 2021,Autumn 2021",7.7,8.7,6.8,4.2
+33502,International Financial Policy,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2023,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025",4.0,5.0,3.2,4.4
+34704,Real Estate Lab: Real Estate Challenge,"Autumn 2021,Autumn 2024",6.1,7.4,4.8,4.9
+42201,The Legal Infrastructure of Business,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",3.2,3.7,2.6,4.1
+33310,Employment Law for Entrepreneurs and Managers,"Autumn 2021,Autumn 2022,Autumn 2023",3.6,3.7,3.5,4.6
+41916,"Bayes, AI and Deep Learning","Autumn 2021,Autumn 2023,Autumn 2024,Autumn 2025",5.9,8.2,3.9,3.9
+38916,Behavioral Economics - Development & Observational Data,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",4.2,5.8,2.9,4.8
+34305,Private Equity Transactions,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025",4.3,4.7,3.7,4.3
+42123,"Reputation, Regulation and Communications - How Media Influences Business","Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2024,Autumn 2024,Winter 2024,Winter 2024",3.4,4.2,2.9,4.6
+42705,"Reputation, Regulation and Communications-How Media Influences Business-Lab","Autumn 2021,Autumn 2022,Autumn 2024,Winter 2024",3.2,3.5,3.0,4.8
+33500,Time-series Analysis for Forecasting and Model Building,"Autumn 2021,Autumn 2021,Autumn 2022,Winter 2024,Winter 2025,Winter 2025",8.8,10.5,6.7,4.5
+41203,Financial Econometrics,"Autumn 2021,Autumn 2022,Winter 2024,Winter 2025",6.7,7.1,6.2,4.2
+41910,Time-series Analysis for Forecasting and Model Building,"Autumn 2021,Autumn 2021,Autumn 2022,Winter 2024,Winter 2025,Winter 2025",15.4,21.8,9.0,4.2
+34103,Building the New Venture,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Winter 2025,Summer 2025,Spring 2025,Spring 2025,Autumn 2025,Winter 2024,Winter 2024,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Spring 2024,Spring 2024,Autumn 2024",5.4,7.0,3.9,4.4
+38901,Current Topics in Behavioral Science I,"Autumn 2021,Autumn 2021,Winter 2023,Winter 2023,Winter 2025,Winter 2025",5.5,6.0,5.0,4.7
+30130,Financial Statement Analysis,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",6.3,9.6,4.2,4.4
+33921,Advanced Industrial Organization I,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025",6.0,6.5,5.4,4.7
+34705,Entrepreneurial Discovery,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",4.4,5.2,3.4,3.9
+37200,New Products and Services,"Autumn 2021,Autumn 2024,Autumn 2024,Autumn 2024,Spring 2023,Spring 2024,Spring 2025,Spring 2025,Winter 2021,Winter 2022,Winter 2023,Winter 2024",5.7,7.5,3.5,4.1
+33002,Accelerated Microeconomics,"Autumn 2021,Autumn 2021,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021",5.1,8.0,3.8,4.1
+31001,Leadership: Effectiveness and Development,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2025",1.7,2.4,1.1,3.4
+31002,Leadership Exploration and Development,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025,Spring 2021,Spring 2022,Spring 2023,Spring 2024,Spring 2025,Summer 2021,Summer 2022,Summer 2024,Summer 2025,Winter 2021,Winter 2022,Winter 2023,Winter 2024,Winter 2025,Winter 2025",1.9,2.4,1.4,4.1
+35215,Behavioral and Institutional Finance,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Winter 2021,Winter 2021",4.3,5.1,3.7,4.5
+38101,Persuasion: Effective Business Communication,"Autumn 2021,Autumn 2022,Autumn 2023,Autumn 2024,Summer 2023,Summer 2024,Summer 2025,Winter 2021,Winter 2022,Winter 2023,Winter 2024,Winter 2025,Winter 2025",3.1,4.3,2.4,4.5
+38116,Leading and Managing Teams,"Autumn 2021,Autumn 2022,Autumn 2022,Summer 2023,Summer 2024",3.0,4.2,2.3,3.6
+34501,Entrepreneurship for Science and Medicine,"Autumn 2022,Autumn 2023,Spring 2022",2.7,3.0,2.4,4.9
+36906,Stochastic Processes,Autumn 2022,16.4,16.4,16.4,4.6
+34210,Entrepreneurship in Healthcare and Life Sciences,"Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025",5.2,6.1,4.1,4.2
+31404,Leadership Lab,"Autumn 2022,Autumn 2023,Autumn 2024,Spring 2022,Spring 2023,Spring 2024,Spring 2025,Winter 2023,Winter 2024,Winter 2025",3.5,4.7,2.9,4.3
+37103,Data-Driven Marketing,"Autumn 2022,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Winter 2025,Winter 2025",5.8,7.3,4.5,4.2
+30900,Foundations of Accounting Research,"Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2024,Autumn 2024,Autumn 2024",11.8,15.0,8.6,4.9
+31403,Leadership Studio,"Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025",3.9,5.3,2.6,4.2
+41175,Behavioral Economics - Development & Observational Data,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",4.5,5.0,4.0,4.8
+38913,Foundations of Judgment and Decision Making,"Autumn 2022,Autumn 2022,Autumn 2024,Autumn 2024,Winter 2021,Winter 2021",5.8,8.0,4.0,4.3
+37105,Data Science for Marketing Decision Making,"Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2025",6.4,7.3,4.7,4.4
+33050,Macroeconomics and the Business Environment,"Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2022,Summer 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025",4.6,7.7,2.9,3.9
+32400,Probability and Statistics,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025",5.6,6.3,5.0,4.1
+30680,Topics Information Economics,"Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2025",7.1,8.0,6.2,4.8
+42116,Game Theory,"Autumn 2022,Autumn 2022,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022",4.9,10.9,3.7,4.1
+34113,Impact Investing,"Autumn 2022,Autumn 2023,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2025,Winter 2025",3.9,4.7,3.1,3.7
+33032,Managing the Workplace,"Autumn 2022,Autumn 2024,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2022,Summer 2023,Winter 2022,Winter 2024",3.6,6.0,2.7,4.3
+42130,Industry Analysis,"Autumn 2022,Winter 2022,Winter 2022",2.0,2.3,1.8,3.5
+35135,"Blockchain, Cryptocurrencies, and Web3","Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Spring 2024,Spring 2024",2.9,3.3,2.5,3.7
+97124,"Blockchain, Cryptocurrencies, and Web3","Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Spring 2024,Spring 2024",3.6,3.6,3.6,3.4
+38003,Power and Influence in Organizations,"Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2024,Spring 2024,Spring 2024",3.5,4.7,2.5,3.8
+38115,Ethics of Business,"Autumn 2022,Winter 2022,Winter 2024,Winter 2025",5.6,6.7,5.1,4.8
+38126,Culture (And Why it Matters),"Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025",2.6,4.4,1.9,3.8
+31425,Real Estate and Equity: Leveling the Playing Field,"Autumn 2022,Autumn 2023,Autumn 2024,Autumn 2025",2.3,2.7,1.8,4.0
+36900,Linear Programming,Autumn 2022,7.1,7.1,7.1,4.7
+30121,Accounting for Entrepreneurship:  From Start Up to IPO,"Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023",4.2,5.0,3.1,4.5
+30930,Research Seminar in Accounting,"Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Spring 2025,Spring 2025,Spring 2025,Winter 2025,Winter 2025,Winter 2025",13.5,17.5,9.4,4.3
+32120,Data Analysis with Python and SQL,"Autumn 2023,Autumn 2023,Autumn 2025,Spring 2025,Summer 2023,Winter 2025,Winter 2025,Winter 2025",4.1,5.2,2.8,4.1
+32210,Generative Thinking,"Autumn 2023,Winter 2025",2.6,3.0,2.1,4.4
+33230,The Economics of Companies,"Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2025,Autumn 2025",4.1,4.8,3.2,4.0
+33401,Money and Banking,"Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2025,Winter 2025,Winter 2025",4.1,6.1,2.5,4.2
+34208,Outperform & Outlast:  Operating and Investing in Closely Held Businesses,"Autumn 2023,Autumn 2024,Autumn 2025,Winter 2023",3.7,4.0,2.8,4.6
+35126,Quantitative Portfolio Management,"Autumn 2023,Autumn 2023,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2025,Winter 2025",4.1,5.2,3.0,4.6
+35210,International Corporate Finance,"Autumn 2023,Autumn 2023,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2025,Winter 2025,Winter 2025",6.2,7.8,4.9,4.6
+35220,Corporate Governance and Activism  - Board and Director Roles in Critical Decisions,"Autumn 2023,Autumn 2023,Autumn 2023",2.1,2.1,2.1,4.3
+41305,Statistical Insight into Entrepreneurial Quantitative Consulting with Wide Business Applications,"Autumn 2023,Summer 2023",3.8,4.0,3.7,4.3
+41917,Causal Machine Learning,"Autumn 2023,Autumn 2023,Winter 2023,Winter 2023",4.2,5.4,3.0,4.2
+42300,Global Health and Social Policy,"Autumn 2023,Autumn 2023,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Winter 2021,Winter 2021",4.1,5.0,3.2,3.9
+30133,Navigating the ESG Landscape: Sustainability Information and Analysis,"Autumn 2024,Autumn 2024,Spring 2024",4.4,6.0,2.8,4.0
+33351,The Business of Pharmaceuticals,"Autumn 2024,Autumn 2025",3.9,4.0,3.9,4.2
+33520,The Wealth of Nations,"Autumn 2024,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023",4.0,4.8,3.1,3.5
+33946,International Macroeconomics and Trade,"Autumn 2021,Autumn 2024,Autumn 2024",10.0,10.0,10.0,4.0
+34220,Advanced New Venture Strategy Workshop,"Autumn 2024,Autumn 2025,Spring 2024,Spring 2025",3.4,4.6,2.5,4.7
+35050,Asset Pricing I,"Autumn 2021,Autumn 2021,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",18.6,18.6,18.6,3.6
+35070,Corporate Finance I,"Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2024",17.5,17.5,17.5,5.0
+35136,Blockchains and Decentralized Finance,"Autumn 2024,Autumn 2025",4.5,5.3,3.6,4.1
+35222,Corporate Governance and Activism - Board and Director Roles in Critical Decisions,"Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025",2.3,2.8,1.7,4.5
+37110,Marketing Strategy (with Sustainability Simulation),"Autumn 2024,Winter 2023,Winter 2024",4.2,4.8,3.5,4.7
+37902,Foundations of Advanced Quantitative Marketing,"Autumn 2024,Winter 2021,Winter 2023",8.9,13.4,6.4,4.8
+40911,Queueing Models for Service Operations Management,Autumn 2024,7.0,7.0,7.0,5.0
+41210,Financial Analytics,"Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025",8.9,12.4,6.2,4.3
+42132,Strategy and Digital Disruption,"Autumn 2024,Autumn 2025",2.6,2.8,2.3,2.9
+30131,Adv Fin Analysis & Valuation,"Autumn 2025,Autumn 2025,Autumn 2025,Spring 2024,Spring 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025",7.0,9.4,5.5,4.5
+34117,Social Entrepreneurship and Innovation,"Autumn 2025,Autumn 2025,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2024",4.7,5.5,4.3,3.7
+35118,Healthcare Finance,Autumn 2025,7.1,7.1,7.1,4.4
+35121,Behavioral Finance,"Autumn 2025,Spring 2021,Spring 2021,Spring 2022,Spring 2022",4.3,6.3,2.9,4.0
+35139,The Economics of Digital Asset Products and Markets,Autumn 2025,5.0,5.0,5.0,3.8
+35141,Advanced Models of Security Pricing and Credit Risk,Autumn 2025,7.8,7.8,7.8,3.6
+35155,The Public and Private Lending Markets: Investment Opportunities and Risks,"Autumn 2025,Autumn 2025",8.6,8.6,8.6,3.9
+35218,Financial Crises,Autumn 2025,5.2,5.2,5.2,3.9
+36905,Approximate Dynamic Programming,Autumn 2025,5.0,5.0,5.0,4.6
+38120,The Study of Behavioral Economics,"Autumn 2025,Autumn 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",2.6,3.2,2.3,4.7
+40110,Managing Service Operations,"Autumn 2025,Autumn 2025,Spring 2024,Spring 2024,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2025,Winter 2025",3.9,4.5,2.8,3.9
+41215,Data Intelligence,"Autumn 2025,Autumn 2025",3.7,3.9,3.6,3.6
+42134,Strategy in the Era of AI and Technological Disruption,Autumn 2025,2.4,2.4,2.4,3.8
+43120,Building an AI Company,Autumn 2025,3.4,3.4,3.4,3.3
+33471,"Business, Politics, and Ethics","Spring 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025",4.4,5.4,3.2,4.3
+42003,Literature and Strategic Leadership,"Spring 2021,Winter 2021",4.3,4.5,4.0,4.0
+33305,The Firm and the Non-Market Environment,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025",4.5,5.8,3.5,4.3
+36111,Application Development II,"Spring 2021,Spring 2022,Spring 2025,Winter 2023",9.8,10.5,8.3,4.8
+40108,Revenue Management,"Spring 2021,Spring 2022,Spring 2024,Spring 2025,Winter 2021,Winter 2022,Winter 2023,Winter 2024",5.5,6.9,3.9,3.4
+35213,Emerging Markets Finance and Entrepreneurship,"Spring 2021,Spring 2021,Spring 2021,Winter 2022,Winter 2022,Winter 2022",5.6,7.2,4.2,4.4
+42709,Consulting Lab,"Spring 2021,Spring 2022,Spring 2023,Spring 2025,Spring 2025,Winter 2022",10.6,13.7,9.2,4.4
+35202,Financial Markets and Institutions,"Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023",4.5,5.7,3.6,4.5
+37202,Pricing Strategies,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022",5.9,9.0,4.1,4.4
+36109,Advanced Decision Models with Python,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025",5.0,7.3,3.4,4.5
+35908,Research Projects: Finance,"Spring 2021,Spring 2022,Spring 2025",16.9,20.0,14.3,5.0
+42714,Integrated Strategic Management Lab,Spring 2021,5.2,5.2,5.2,4.8
+34115,New Social Ventures,"Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2025",13.0,15.6,10.4,4.5
+42117,Platform Competition,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Winter 2022,Winter 2022,Winter 2022",3.7,4.1,3.0,4.7
+41903,Applied Econometrics,"Spring 2021,Spring 2022,Spring 2023,Spring 2024,Spring 2025",6.4,9.7,4.2,4.6
+35130,Fixed Income Asset Pricing,"Spring 2021,Spring 2022,Spring 2023,Spring 2024,Spring 2025,Spring 2025",10.5,14.7,7.7,4.1
+34702,Private Equity/Venture Capital Lab,"Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",15.9,20.9,6.6,4.7
+33222,Sports Analytics,"Spring 2021,Spring 2021,Spring 2022,Spring 2022",7.2,8.6,5.8,3.8
+41185,Behavioral Economics - Theory & the Lab,"Spring 2021,Spring 2025,Spring 2025",5.2,7.0,3.3,4.5
+34104,Special Topics in Entrepreneurship: Developing a New Venture (New Venture Challenge),"Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025",16.9,27.2,13.5,4.5
+33403,Advanced Macroeconomics,"Spring 2021,Spring 2021,Spring 2022,Spring 2022",6.3,6.9,5.8,4.4
+38919,Psychology and Social Inequities,"Spring 2021,Spring 2021",6.5,6.5,6.5,4.5
+30120,"Accounting, Economic, and Regulatory Issues in Complex Deals","Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023",4.6,5.4,4.1,4.3
+37704,Algorithmic Marketing Lab,Spring 2021,7.4,7.4,7.4,3.6
+37905,Marketing Literature Seminar,"Spring 2021,Spring 2021,Winter 2022,Winter 2022,Winter 2025,Winter 2025",6.0,8.4,4.7,4.5
+33314,Big Problems,"Spring 2021,Spring 2021,Spring 2022,Spring 2022",4.6,4.7,4.5,4.0
+33451,Real Estate Investments II,"Spring 2021,Spring 2022,Spring 2023,Spring 2024,Spring 2024,Spring 2025",4.8,6.2,2.7,4.2
+35120,Portfolio Management,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025",5.9,7.0,4.7,4.7
+34108,Innovation Leadership,"Spring 2021,Spring 2021,Spring 2022,Spring 2024,Spring 2025,Winter 2023,Winter 2023",3.6,5.3,2.7,4.0
+34206,"Women As CEOs, Entrepreneurs, Investors, Executives & Directors","Spring 2021,Spring 2022,Winter 2023,Winter 2024,Winter 2025",3.6,4.1,2.6,3.9
+41201,Big Data,"Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Winter 2025,Winter 2025,Winter 2025",6.6,9.4,4.8,3.9
+42124,Storytelling and Narratives in Business,"Spring 2021,Spring 2021,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2022,Summer 2022",3.2,4.6,2.2,4.5
+33701,Energy Policy Practicum,"Spring 2021,Spring 2021,Spring 2022,Spring 2022",5.1,5.2,5.0,4.2
+39001,Strategy and Structure: Markets and Organizations,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2025,Winter 2022",3.6,4.5,2.9,3.6
+30001,Cost Analysis and Internal Controls,"Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Summer 2021,Summer 2021,Summer 2022,Summer 2023,Summer 2023,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024",4.6,6.6,2.2,4.2
+37903,Adv Mktg Theory:  Behavioral Science Approach,"Spring 2021,Spring 2025",8.3,9.0,7.6,4.9
+37201,Lab in Developing New Products and Services,"Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024",8.0,11.4,6.1,4.2
+41202,Analysis of Financial Time Series,"Spring 2021,Spring 2021",6.9,7.5,6.4,4.0
+31702,Leadership Effectiveness and Development (LEAD) Lab,"Spring 2021,Spring 2023",2.2,2.4,2.0,4.5
+38102,Persuasion II,"Spring 2021,Spring 2022,Spring 2023,Spring 2024",4.5,7.5,2.5,4.6
+38105,Advanced Negotiations,"Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025",3.5,4.8,2.9,4.2
+35123,The FinTech Revolution,"Spring 2021,Spring 2021,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025",4.2,5.2,3.4,4.2
+31420,The Power of Personal Branding and Storytelling in the Digital Age,Spring 2022,2.0,2.0,2.0,3.0
+42005,Literature and Leadership,"Spring 2022,Spring 2023,Spring 2024,Spring 2025",4.5,5.1,3.9,4.2
+40301,Advanced Industrial Organization III,"Spring 2022,Spring 2025",11.9,15.0,8.8,4.8
+30902,Empirical Research in Accounting,"Spring 2022,Spring 2022,Spring 2022,Spring 2022",9.4,9.4,9.4,5.0
+38119,Designing a Good Life,"Spring 2022,Spring 2022,Spring 2022,Winter 2021,Winter 2021,Winter 2021,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",4.1,7.6,3.3,4.2
+36330,New Developments in Public Finance,"Spring 2022,Spring 2022,Spring 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2025,Winter 2025,Winter 2025",6.6,7.1,6.2,4.6
+33250,Perspectives on CapitalismPerspectives on Capitalism,"Spring 2022,Spring 2023",6.2,8.5,4.3,4.5
+42119,Culture as a Competitive Business Advantage,"Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2024,Spring 2024",2.9,3.8,2.4,3.4
+37209,Brand Management in a Digital Age,"Spring 2022,Spring 2023,Spring 2024,Spring 2025,Winter 2023,Winter 2023,Winter 2024,Winter 2025,Winter 2025",3.5,4.7,2.9,4.6
+37906,Applied Bayesian Econometrics,"Spring 2022,Winter 2021,Winter 2025",4.7,6.6,3.0,4.3
+33918,Topics in Labor Economics,"Spring 2022,Spring 2022,Spring 2022,Spring 2025,Spring 2025,Spring 2025",6.3,7.0,5.6,4.7
+51700,Energy Policy Practicum,"Spring 2021,Spring 2021,Spring 2022,Spring 2022",8.4,8.4,8.4,4.6
+32105,Intro to Databases for Business Analytics,"Spring 2022,Spring 2022",2.9,2.9,2.9,4.7
+36918,Stochastic Calculus and Queueing Applications,Spring 2022,8.4,8.4,8.4,4.4
+42131,Leadership in the Emerging Ecosystem Economy,"Spring 2023,Spring 2023,Spring 2024,Spring 2024",4.0,4.7,3.3,4.6
+42128,Outsourcing in the Modern Economy: Contract Governance and Business Strategy,Spring 2023,3.6,3.6,3.6,2.6
+40603,Market Design,"Spring 2023,Spring 2023,Spring 2025,Spring 2025",7.5,8.6,6.3,4.7
+34205,Life Sciences: Innovation and Finance,"Spring 2023,Spring 2024",3.8,4.2,3.5,4.1
+34120,Evaluating and Scaling Social Innovation,Spring 2023,4.2,4.2,4.2,4.6
+34219,Institutional Private Capital Investing,"Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025",5.3,6.6,3.8,4.0
+42726,Art + Business Lab,"Spring 2023,Spring 2024,Spring 2025",3.3,3.8,3.0,4.3
+30132,"Navigating the ESG Landscape: Information, Sustainability Reporting, and Analysis",Spring 2023,3.8,3.8,3.8,4.4
+38921,Tools of Thought,Spring 2023,4.0,4.0,4.0,5.0
+35901,Portfolio Choice and Asset Pricing,Spring 2023,19.6,19.6,19.6,4.8
+35207,Consumer Finance,"Spring 2023,Spring 2023,Spring 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",3.4,4.2,2.7,4.5
+38122,Diversity in Organizations,"Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2025,Winter 2025,Winter 2025",4.1,5.1,3.1,4.1
+37907,Behavioral Science Research Methods in Marketing,"Spring 2023,Winter 2025",4.1,4.3,3.8,4.8
+30122,Deal Structuring and Financial Reporting Implications,"Spring 2024,Spring 2024,Spring 2025,Winter 2023",8.1,9.1,6.8,4.3
+33320,Financing the Grid: Valuing Transmission & Storage Capacity,"Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025",4.8,5.2,4.5,3.5
+33350,Health Economics,"Spring 2024,Spring 2024,Spring 2025,Spring 2025,Winter 2022,Winter 2022,Winter 2023,Winter 2023",5.0,6.2,4.2,4.5
+35225,Crony Capitalism,"Spring 2024,Spring 2024,Spring 2025,Spring 2025",3.1,3.5,2.7,4.0
+36922,"Online Learning, Operations, and Electronic Markets","Spring 2024,Spring 2025",6.7,7.5,5.8,4.8
+37212,Business with Purpose,"Spring 2024,Spring 2024,Winter 2025,Winter 2025",3.1,3.5,2.7,3.6
+42711,Global Social Entrepreneurship Lab,"Spring 2024,Spring 2025",4.9,5.1,4.6,4.8
+28620,Crony Capitalism,"Spring 2024,Spring 2024,Spring 2025,Spring 2025",4.5,4.6,4.4,4.4
+30005,Internal Information for Strategic Decisions,"Spring 2025,Spring 2025,Spring 2025,Summer 2025,Winter 2025,Winter 2025,Winter 2025",4.6,5.4,3.9,4.2
+30590,Asset Pricing III,"Spring 2025,Spring 2025",25.0,25.0,25.0,5.0
+30901,Economic Modeling of Accounting Issues,Spring 2025,10.0,10.0,10.0,5.0
+30932,Research Seminar in Accounting,"Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Spring 2025,Spring 2025,Spring 2025,Winter 2025,Winter 2025,Winter 2025",5.0,5.0,5.0,3.0
+32130,Data Visualization for Decision-Making,Spring 2025,2.8,2.8,2.8,3.8
+33905,Microeconomics Reading and Research Seminar,"Spring 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2025,Winter 2025,Winter 2025",5.0,5.0,5.0,5.0
+34211,Value Creation in Small Businesses,"Spring 2025,Spring 2025",2.9,2.9,2.9,4.6
+35124,Arbitrage Investing,Spring 2025,4.9,4.9,4.9,5.0
+35137,Machine Learning in Finance,"Spring 2025,Spring 2025",5.9,6.4,5.4,4.0
+35214,"Debt, Distress, and Restructuring","Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024",4.3,5.1,3.5,4.6
+37720,Health Economics Literature Seminar,"Spring 2025,Winter 2025",2.9,3.5,2.3,5.0
+38107,Crafting and Delivering Persuasive Narratives,Spring 2025,2.8,2.8,2.8,3.6
+38902,Current Topics in Behavioral Science II,"Spring 2025,Spring 2025",4.5,4.5,4.5,5.0
+38918,Behavioral Economics - Theory & the Lab,"Spring 2021,Spring 2025,Spring 2025",3.7,3.7,3.7,5.0
+41204,Machine Learning,"Spring 2025,Spring 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023",8.7,13.9,2.8,3.9
+42135,Market Design and Platforms,"Spring 2025,Spring 2025",3.8,3.9,3.6,4.2
+42310,Health-Tech Strategy,Spring 2025,2.1,2.1,2.1,2.3
+42712,Housing and Social Impact Lab,Spring 2025,4.4,4.4,4.4,4.4
+40111,Project Management,"Summer 2021,Summer 2022,Summer 2023,Summer 2024,Summer 2025",4.0,4.3,3.7,4.8
+38118,Effective Management of Groups and Teams,"Summer 2021,Summer 2021,Summer 2022,Summer 2022",3.7,4.2,3.3,3.4
+33301,"Management, Unions, and Collective Bargaining","Summer 2021,Summer 2022",4.7,4.8,4.6,4.8
+37107,Experimental Marketing,"Summer 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024",5.1,6.1,4.3,4.0
+31430,Winning Writing,Summer 2022,1.9,1.9,1.9,4.6
+35131,Cases in Financial Risk Management,Summer 2022,5.5,5.5,5.5,4.3
+33352,Understanding the Health Policy Forces Driving the U.S. Health Care System,Summer 2025,2.5,2.5,2.5,3.5
+40205,Healthcare Data Analytics,"Winter 2021,Winter 2021",7.4,7.9,6.9,4.5
+34709,Lab to Launch,"Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",6.6,7.8,5.9,4.5
+33904,Microeconomics Reading and Research Seminar,"Spring 2025,Spring 2025,Spring 2025,Winter 2021,Winter 2025,Winter 2025,Winter 2025",4.1,5.0,1.2,5.0
+39002,Strategic Leadership,"Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022",1.9,2.4,1.6,4.0
+42108,Corporate Governance,"Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",4.1,4.7,3.5,4.2
+40910,Supply Chain Foundations & Theory,Winter 2021,8.2,8.2,8.2,4.6
+33503,Managing the Firm in the Global Economy,"Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024",4.5,5.7,3.8,4.0
+34306,Entrepreneurship through Intellectual Property,"Winter 2021,Winter 2021,Winter 2022,Winter 2022",3.0,3.0,3.0,3.3
+34722,Scaling Social Innovation Search Lab,"Winter 2021,Winter 2022",6.1,6.7,5.5,4.3
+33112,Business in Historical Perspective,"Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",3.2,3.7,2.7,3.9
+42400,Applied Microeconomics in Economic History,"Winter 2021,Winter 2022,Winter 2025",5.3,6.8,3.8,3.9
+34902,Asset Pricing II,"Winter 2021,Winter 2021,Winter 2025,Winter 2025,Winter 2025,Winter 2025",11.9,12.9,11.0,4.5
+33916,Consensus and Economics,Winter 2021,4.0,4.0,4.0,4.6
+32200,Artificial Intelligence,"Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2025",4.6,5.6,2.9,4.5
+33450,Real Estate Investments I,"Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",6.6,9.6,4.9,3.6
+34904,Corporate Finance II,"Winter 2021,Winter 2023,Winter 2025,Winter 2025",12.3,14.4,10.0,4.9
+41902,Statistical Inference,"Winter 2021,Winter 2022,Winter 2023,Winter 2024,Winter 2025",8.2,10.1,5.7,4.3
+36914,Queueing Theory,"Winter 2021,Winter 2022",8.6,9.8,7.4,4.7
+40721,Healthcare Analytics Lab,"Winter 2022,Winter 2024",14.3,15.0,13.7,4.0
+37904,Advanced Quantitative Marketing,"Winter 2022,Winter 2022,Winter 2025,Winter 2025",7.3,10.0,4.5,4.9
+42715,Strategy Simulation: Creating Value in Complex and Ambiguous Settings,"Winter 2022,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025",4.1,4.7,3.4,4.6
+34307,Entrepreneurship through Intellectual Property,"Winter 2021,Winter 2021,Winter 2022,Winter 2022",3.4,3.4,3.4,3.6
+42708,CSR Practicum,"Winter 2022,Winter 2024,Winter 2025",5.4,5.5,5.3,4.3
+34209,Private Markets from an Investor's Perspective,"Winter 2022,Winter 2022",6.3,6.5,6.1,3.9
+31015,Mathematical Computation IIA: Convex Optimization,Winter 2022,12.7,12.7,12.7,3.3
+38920,"Data Science, Algorithms and Society","Winter 2022,Winter 2022",3.8,3.8,3.8,5.0
+30905,Corporate Social Responsibility and Policy Assessment,"Winter 2023,Winter 2025",10.4,13.3,7.5,4.7
+34502,Intro to Venture Capital: A Toolkit for Analyzing and Financing Startups,"Winter 2023,Winter 2024,Winter 2025",2.4,2.7,2.1,4.6
+35150,Advanced Investments,"Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2025,Winter 2025",6.4,8.2,4.8,4.2
+33700,Multivariate Time Series Analysis,Winter 2023,8.6,8.6,8.6,4.2
+42129,The Political Economy of Climate Change,"Winter 2023,Winter 2024,Winter 2025",3.9,4.5,3.6,4.5
+41206,Decoding FinTech,"Winter 2023,Winter 2023",2.9,3.0,2.8,3.4
+38128,Citizenship,Winter 2024,5.3,5.3,5.3,4.6
+41918,"Data, Learning, and Algorithms","Winter 2024,Winter 2025",5.9,7.0,4.9,4.9
+35145,The Family Office,"Winter 2025,Winter 2025",3.2,3.2,3.2,3.7
+30135,AI and Financial Information,Winter 2025,2.9,2.9,2.9,4.5
+30931,Research Seminar in Accounting,"Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Spring 2025,Spring 2025,Spring 2025,Winter 2025,Winter 2025,Winter 2025",5.0,5.0,5.0,2.0
+35010,Managerial Finance,Winter 2025,4.7,4.7,4.7,4.7
+36912,Stochastic Optimization,Winter 2025,20.0,20.0,20.0,5.0
+38000,Managerial Psychology,"Winter 2025,Winter 2025",3.8,3.8,3.8,3.8
+41207,Causal Inference for Business Applications,Winter 2025,5.9,5.9,5.9,4.4
+33703,Financial Markets in the Macroeconomy,Winter 2025,9.8,9.8,9.8,4.8
+35060,Asset Pricing II,"Winter 2021,Winter 2021,Winter 2025,Winter 2025,Winter 2025,Winter 2025",13.3,13.3,13.3,4.0
+35080,Corporate Finance II,"Winter 2021,Winter 2023,Winter 2025,Winter 2025",12.7,12.7,12.7,5.0
+30800,Financial Accounting,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2022,Summer 2023,Summer 2023,Summer 2024,Summer 2024,Summer 2025,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",12.9,14.3,11.5,4.7
+35802,Financial Strategy,"Winter 2025,Winter 2025",20.4,21.2,19.5,4.5
+40801,Operations Management,"Winter 2025,Winter 2025",17.2,17.4,17.0,4.6
+42800,Competitive Strategy,"Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2021,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2022,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2023,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2024,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Autumn 2025,Spring 2021,Spring 2021,Spring 2021,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2022,Spring 2023,Spring 2023,Spring 2023,Spring 2024,Spring 2024,Spring 2024,Spring 2025,Spring 2025,Spring 2025,Spring 2025,Summer 2021,Summer 2021,Summer 2022,Summer 2023,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2021,Winter 2022,Winter 2022,Winter 2022,Winter 2023,Winter 2023,Winter 2023,Winter 2023,Winter 2024,Winter 2024,Winter 2024,Winter 2024,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025,Winter 2025",9.9,11.3,8.5,4.4

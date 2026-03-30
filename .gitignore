@@ -60,5 +60,5 @@ env.txt
 # ----------------------
 # Local data directories
 # ----------------------
-data/
+# data/
 datasets/
