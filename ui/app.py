@@ -399,8 +399,8 @@ else:
                     temp_label = f"SuggestedCourse_{uuid.uuid4().hex[:6]}"
 
                     # --- Load CSVs ---
-                    courses_df = pd.read_csv("../data/courses.csv")  # all course info
-                    predictions_df = pd.read_csv("../pred/class_term_pred.csv")  # optional predicted terms
+                    courses_df = pd.read_csv(os.path.join(BASE_DIR, "../data/courses.csv"))
+                    predictions_df = pd.read_csv(os.path.join(BASE_DIR, "../pred/class_term_pred.csv"))
 
                     # --- Query Neo4j for candidate courses ---
                     # Matches courses under selected concentrations
