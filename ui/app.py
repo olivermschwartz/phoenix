@@ -27,6 +27,44 @@ def get_driver():
 driver = get_driver()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+NODE_TYPE_COLORS = {
+    "Course": "#FF7F7F",
+    "Strategic Pick": "#FF3B30",
+    "Not Offered In Selected Terms": "#6F7378",
+    "Concentration": "#7FFFD4",
+    "FLMB Requirement": "#FFD700",
+    "Foundation": "#9370DB",
+    "Suggested Path": "#90EE90",
+    "Other": "#B8B8B8",
+}
+
+DEFAULT_VISUAL_SETTINGS = {
+    "avg_recommendation": 4,
+    "low_workload": 2,
+    "selected_terms": [],
+    "lookback_years": None,
+}
+
+TERM_OPTIONS = ["Winter", "Spring", "Summer", "Autumn"]
+
+CONCENTRATION_COURSE_REQUIREMENTS = {
+    "Accounting": 4,
+    "Applied Artificial Intelligence": 3,
+    "Behavioral Science": 4,
+    "Business Analytics": 5,
+    "Business Society and Sustainability": 4,
+    "Econometrics and Statistics": 3,
+    "Economics": 4,
+    "Entrepreneurship": 3,
+    "Finance": 4,
+    "Analytic Finance": 6,
+    "Healthcare": 4,
+    "International Business": 3,
+    "Marketing Management": 4,
+    "Operations Management": 3,
+    "Strategic Management": 4,
+}
+
 @st.cache_data
 def load_concentrations():
     path = os.path.join(BASE_DIR, "../data/concentrations.csv")
@@ -38,6 +76,45 @@ def load_courses():
     path = os.path.join(BASE_DIR, "../data/courses.csv")
     df = pd.read_csv(path)
     return df["course_name"].dropna().tolist()
+
+@st.cache_data
+def load_flmb_requirement_types():
+    path = os.path.join(BASE_DIR, "../data/flmb_entities.csv")
+    df = pd.read_csv(path)
+    return df["flmb_sub_type"].dropna().tolist()
+
+@st.cache_data
+def load_foundations():
+    path = os.path.join(BASE_DIR, "../data/foundations_entities.csv")
+    df = pd.read_csv(path)
+    return df["foundation"].dropna().tolist()
+
+@st.cache_data
+def load_degree_requirement_text():
+    path = os.path.join(BASE_DIR, "../data/degree_requirements")
+    with open(path, "r", encoding="utf-8") as file:
+        return file.read()
+
+@st.cache_data
+def load_foundation_requirements_map():
+    path = os.path.join(BASE_DIR, "../data/foundations_map.csv")
+    df = pd.read_csv(path)
+    df["course_number"] = df["course_number"].astype(str)
+    return df
+
+@st.cache_data
+def load_flmb_requirements_map():
+    path = os.path.join(BASE_DIR, "../data/flmb_edges.csv")
+    df = pd.read_csv(path)
+    df["course_number"] = df["course_number"].astype(str)
+    return df
+
+@st.cache_data
+def load_concentration_requirements_map():
+    path = os.path.join(BASE_DIR, "../data/concentration_map.csv")
+    df = pd.read_csv(path)
+    df["Class Number"] = df["Class Number"].astype(str)
+    return df
 
 sample_query_flmb_requirements = """
 MATCH (n)-[r:flmb_requirement]->(b)
@@ -126,6 +203,668 @@ def compute_graph_counts(graph):
         rels_count = len(list(graph.relationships))
     return nodes_count, rels_count
 
+
+def node_to_properties(node):
+    try:
+        return dict(node)
+    except Exception:
+        return getattr(node, "properties", {})
+
+
+def node_to_labels(node):
+    labels = getattr(node, "labels", None)
+    if labels is not None:
+        return list(labels)
+    properties = node_to_properties(node)
+    labels = properties.get("labels", [])
+    if isinstance(labels, list):
+        return labels
+    return [labels] if labels else []
+
+
+def visible_courses_from_graph(graph):
+    if not graph:
+        return []
+
+    courses_by_number = {}
+    for node in list(graph.nodes):
+        labels = node_to_labels(node)
+        properties = node_to_properties(node)
+        if "Courses" not in labels and "course_name" not in properties:
+            continue
+
+        course_number = properties.get("course_number")
+        course_name = properties.get("course_name")
+        if course_number is None or not course_name:
+            continue
+
+        course_number = str(course_number)
+        courses_by_number[course_number] = {
+            "course_number": course_number,
+            "course_name": course_name,
+            "label": f"{course_number} - {course_name}",
+        }
+
+    return sorted(courses_by_number.values(), key=lambda course: course["label"])
+
+
+def is_course_node(node):
+    labels = node.properties.get("labels", [])
+    if not isinstance(labels, list):
+        labels = [labels]
+    return "Courses" in labels
+
+
+def get_course_name(node):
+    return node.properties.get("course_name")
+
+
+def get_node_type(node):
+    labels = node.properties.get("labels", [])
+    if not isinstance(labels, list):
+        labels = [labels]
+
+    if "Courses" in labels:
+        return "Course"
+    if "concentration" in labels:
+        return "Concentration"
+    if any(str(label).startswith("SuggestedCourse_") for label in labels):
+        return "Suggested Path"
+    if "flmb_sub_type" in node.properties:
+        return "FLMB Requirement"
+    if "foundation" in node.properties:
+        return "Foundation"
+    return "Other"
+
+
+def get_numeric_property(node, property_name):
+    value = node.properties.get(property_name)
+    try:
+        if value is None or value == "":
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def parse_terms_offered(terms_offered):
+    if not isinstance(terms_offered, str):
+        return []
+
+    terms = []
+    for entry in terms_offered.split(","):
+        parts = entry.strip().split()
+        if len(parts) != 2:
+            continue
+        term, year = parts
+        try:
+            terms.append({"term": term.title(), "year": int(year)})
+        except ValueError:
+            continue
+    return terms
+
+
+def course_matches_term_filter(node, selected_terms, lookback_years):
+    if not selected_terms:
+        return True
+
+    current_year = pd.Timestamp.today().year
+    min_year = current_year - lookback_years if lookback_years is not None else None
+    selected_terms = set(selected_terms)
+
+    for offering in parse_terms_offered(node.properties.get("terms_offered")):
+        if offering["term"] not in selected_terms:
+            continue
+        if min_year is not None and offering["year"] < min_year:
+            continue
+        return True
+    return False
+
+
+def normalize_values(nodes, property_name, higher_is_better=True):
+    values_by_id = {
+        node.id: value
+        for node in nodes
+        if (value := get_numeric_property(node, property_name)) is not None
+    }
+    if not values_by_id:
+        return {}
+
+    min_value = min(values_by_id.values())
+    max_value = max(values_by_id.values())
+    if min_value == max_value:
+        return {node_id: 0.5 for node_id in values_by_id}
+
+    normalized = {}
+    for node_id, value in values_by_id.items():
+        score = (value - min_value) / (max_value - min_value)
+        normalized[node_id] = score if higher_is_better else 1 - score
+    return normalized
+
+
+def apply_course_node_sizes(nodes, visual_settings):
+    course_nodes = [node for node in nodes if is_course_node(node)]
+    if not course_nodes:
+        return
+
+    recommendation_weight = visual_settings.get("avg_recommendation", 0)
+    workload_weight = visual_settings.get("low_workload", 0)
+    total_weight = recommendation_weight + workload_weight
+    recommendation_scores = normalize_values(course_nodes, "avg_recommendation", higher_is_better=True)
+    workload_scores = normalize_values(course_nodes, "avg_hours_of_work", higher_is_better=False)
+
+    for node in nodes:
+        if not is_course_node(node):
+            continue
+
+        if total_weight <= 0:
+            course_score = 0.5
+        else:
+            weighted_score = 0
+            weighted_score += recommendation_weight * recommendation_scores.get(node.id, 0.5)
+            weighted_score += workload_weight * workload_scores.get(node.id, 0.5)
+            course_score = weighted_score / total_weight
+
+        node.properties["priority_score"] = round(course_score, 3)
+        node.size = 18 + (course_score * 34)
+
+
+def fetch_selected_requirement_counts(concentrations, flmb_types, foundations):
+    requirements_by_course = {}
+
+    def add_requirement(course_name, requirement):
+        if course_name:
+            requirements_by_course.setdefault(course_name, set()).add(requirement)
+
+    with driver.session() as session:
+        if concentrations:
+            result = session.run(
+                """
+                MATCH (c:concentration)-[:INCLUDE*]->(course:Courses)
+                WHERE c.Concentration IN $concentrations
+                RETURN course.course_name AS course_name, collect(DISTINCT c.Concentration) AS requirements
+                """,
+                {"concentrations": concentrations},
+            )
+            for record in result:
+                for requirement in record["requirements"]:
+                    add_requirement(record["course_name"], f"Concentration: {requirement}")
+
+        if flmb_types:
+            result = session.run(
+                """
+                MATCH (requirement)-[:flmb_requirement]->(course:Courses)
+                WHERE requirement.flmb_sub_type IN $flmb_types
+                RETURN course.course_name AS course_name, collect(DISTINCT requirement.flmb_sub_type) AS requirements
+                """,
+                {"flmb_types": flmb_types},
+            )
+            for record in result:
+                for requirement in record["requirements"]:
+                    add_requirement(record["course_name"], f"FLMB: {requirement}")
+
+        if foundations:
+            result = session.run(
+                """
+                MATCH (foundation)-[]->(course:Courses)
+                WHERE foundation.foundation IN $foundations
+                RETURN course.course_name AS course_name, collect(DISTINCT foundation.foundation) AS requirements
+                """,
+                {"foundations": foundations},
+            )
+            for record in result:
+                for requirement in record["requirements"]:
+                    add_requirement(record["course_name"], f"Foundation: {requirement}")
+
+    return {
+        course_name: {
+            "count": len(requirements),
+            "requirements": sorted(requirements),
+        }
+        for course_name, requirements in requirements_by_course.items()
+    }
+
+
+def summarize_degree_progress(selected_course_numbers):
+    selected_course_numbers = {str(course_number) for course_number in selected_course_numbers}
+    foundation_map = load_foundation_requirements_map()
+    flmb_map = load_flmb_requirements_map()
+
+    selected_foundations = sorted(
+        foundation_map[foundation_map["course_number"].isin(selected_course_numbers)]["foundation"].dropna().unique()
+    )
+    selected_flmb_categories = sorted(
+        flmb_map[flmb_map["course_number"].isin(selected_course_numbers)]["flmb_sub_type"].dropna().unique()
+    )
+
+    return {
+        "foundations": selected_foundations,
+        "flmb_categories": selected_flmb_categories,
+        "electives_count": len(selected_course_numbers),
+        "foundation_total": len(load_foundations()),
+        "flmb_required": 7,
+        "electives_required": 10,
+    }
+
+
+def course_requirement_tags(course_number):
+    course_number = str(course_number)
+    foundation_map = load_foundation_requirements_map()
+    flmb_map = load_flmb_requirements_map()
+    concentration_map = load_concentration_requirements_map()
+
+    tags = []
+    foundations = foundation_map[foundation_map["course_number"] == course_number]["foundation"].dropna().unique()
+    flmb_categories = flmb_map[flmb_map["course_number"] == course_number]["flmb_sub_type"].dropna().unique()
+    concentrations = concentration_map[
+        concentration_map["Class Number"] == course_number
+    ]["Concentration"].dropna().unique()
+    tags.extend(f"Foundation: {foundation}" for foundation in sorted(foundations))
+    tags.extend(f"FLMB: {category}" for category in sorted(flmb_categories))
+    tags.extend(f"Concentration: {concentration}" for concentration in sorted(concentrations))
+    tags.append("Elective")
+    return tags
+
+
+def summarize_concentration_progress(selected_course_numbers):
+    selected_course_numbers = {str(course_number) for course_number in selected_course_numbers}
+    concentration_map = load_concentration_requirements_map()
+    rows = []
+
+    for concentration, required_count in CONCENTRATION_COURSE_REQUIREMENTS.items():
+        eligible_courses = set(
+            concentration_map[
+                concentration_map["Concentration"] == concentration
+            ]["Class Number"]
+        )
+        matching_courses = selected_course_numbers & eligible_courses
+        rows.append(
+            {
+                "Concentration": concentration,
+                "Planned": len(matching_courses),
+                "Required": required_count,
+                "Progress": min(len(matching_courses) / required_count, 1),
+                "Complete": len(matching_courses) >= required_count,
+            }
+        )
+
+    return sorted(rows, key=lambda row: (not row["Complete"], -row["Progress"], row["Concentration"]))
+
+
+def visible_courses_for_unmet_requirements(visible_courses, selected_course_numbers, progress):
+    selected_course_numbers = {str(course_number) for course_number in selected_course_numbers}
+    visible_course_numbers = {course["course_number"] for course in visible_courses} - selected_course_numbers
+    foundation_map = load_foundation_requirements_map()
+    flmb_map = load_flmb_requirements_map()
+
+    unmet_foundations = set(load_foundations()) - set(progress["foundations"])
+    unmet_flmb_slots_remaining = max(progress["flmb_required"] - len(progress["flmb_categories"]), 0)
+    unmet_flmb_categories = set(load_flmb_requirement_types()) - set(progress["flmb_categories"])
+
+    suggestions = {}
+    for foundation in sorted(unmet_foundations):
+        course_numbers = set(
+            foundation_map[
+                (foundation_map["foundation"] == foundation)
+                & (foundation_map["course_number"].isin(visible_course_numbers))
+            ]["course_number"]
+        )
+        if course_numbers:
+            suggestions[f"Foundation: {foundation}"] = course_numbers
+
+    if unmet_flmb_slots_remaining > 0:
+        for category in sorted(unmet_flmb_categories):
+            course_numbers = set(
+                flmb_map[
+                    (flmb_map["flmb_sub_type"] == category)
+                    & (flmb_map["course_number"].isin(visible_course_numbers))
+                ]["course_number"]
+            )
+            if course_numbers:
+                suggestions[f"FLMB: {category}"] = course_numbers
+
+    if progress["electives_count"] < progress["electives_required"]:
+        suggestions["Electives"] = visible_course_numbers
+
+    return suggestions
+
+
+def render_degree_progress_panel():
+    visible_courses = visible_courses_from_graph(st.session_state.graph)
+    if "selected_degree_courses" not in st.session_state:
+        st.session_state.selected_degree_courses = []
+
+    st.subheader("Degree Requirements Planner")
+    st.caption("Tag visible classes to see how they can satisfy Booth graduation requirements.")
+
+    if not visible_courses:
+        st.info("Run a graph query with course nodes to tag classes toward degree requirements.")
+        return
+
+    course_labels_by_number = {
+        course["course_number"]: course["label"] for course in visible_courses
+    }
+    selected_course_numbers = [
+        course_number
+        for course_number in st.session_state.selected_degree_courses
+        if course_number in course_labels_by_number
+    ]
+    st.session_state.selected_degree_courses = selected_course_numbers
+
+    progress = summarize_degree_progress(selected_course_numbers)
+    foundation_count = len(progress["foundations"])
+    flmb_count = min(len(progress["flmb_categories"]), progress["flmb_required"])
+    elective_count = min(progress["electives_count"], progress["electives_required"])
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Foundations", f"{foundation_count}/{progress['foundation_total']}")
+        st.progress(foundation_count / progress["foundation_total"] if progress["foundation_total"] else 0)
+        st.caption(", ".join(progress["foundations"]) if progress["foundations"] else "No foundations tagged yet.")
+    with col2:
+        st.metric("FLMB", f"{flmb_count}/{progress['flmb_required']}")
+        st.progress(flmb_count / progress["flmb_required"])
+        st.caption(", ".join(progress["flmb_categories"]) if progress["flmb_categories"] else "No FLMB categories tagged yet.")
+    with col3:
+        st.metric("Electives", f"{elective_count}/{progress['electives_required']}")
+        st.progress(elective_count / progress["electives_required"])
+        st.caption("Any tagged class can count toward the elective pool.")
+
+    st.markdown("**Tagged Classes**")
+    if selected_course_numbers:
+        tagged_rows = []
+        for course_number in selected_course_numbers:
+            tagged_rows.append(
+                {
+                    "Course": course_labels_by_number.get(course_number, course_number),
+                    "Satisfies": ", ".join(course_requirement_tags(course_number)),
+                }
+            )
+        st.dataframe(pd.DataFrame(tagged_rows), use_container_width=True, hide_index=True)
+    else:
+        st.caption("No classes tagged yet. Select a class above the graph and click Add to Plan.")
+
+    st.markdown("**Concentration Progress**")
+    concentration_progress = summarize_concentration_progress(selected_course_numbers)
+    completed_concentrations = [
+        row["Concentration"] for row in concentration_progress if row["Complete"]
+    ]
+    if completed_concentrations:
+        st.success(f"Completed: {', '.join(completed_concentrations)}")
+    else:
+        st.caption("No concentrations completed yet.")
+
+    concentration_rows = []
+    for row in concentration_progress:
+        if row["Planned"] == 0 and not row["Complete"]:
+            continue
+        concentration_rows.append(
+            {
+                "Concentration": row["Concentration"],
+                "Progress": f"{row['Planned']}/{row['Required']}",
+                "Status": "Complete" if row["Complete"] else "In progress",
+            }
+        )
+
+    if concentration_rows:
+        st.dataframe(pd.DataFrame(concentration_rows), use_container_width=True, hide_index=True)
+    else:
+        st.caption("Add concentration-eligible classes to see concentration progress.")
+    st.caption("Concentration progress uses eligible-course counts from the concentration map; detailed subcategory rules are not audited yet.")
+
+def render_add_to_plan_controls():
+    visible_courses = visible_courses_from_graph(st.session_state.graph)
+    if "selected_degree_courses" not in st.session_state:
+        st.session_state.selected_degree_courses = []
+
+    if not visible_courses:
+        return
+
+    course_labels_by_number = {
+        course["course_number"]: course["label"] for course in visible_courses
+    }
+    selected_course = st.selectbox(
+        "Course to add",
+        options=[None] + list(course_labels_by_number.keys()),
+        format_func=lambda course_number: (
+            "Select a class to add to the plan below"
+            if course_number is None
+            else course_labels_by_number[course_number]
+        ),
+        label_visibility="collapsed",
+        key="course_to_add_to_plan",
+    )
+
+    if st.button("Add to Plan", use_container_width=True):
+        if selected_course and selected_course not in st.session_state.selected_degree_courses:
+            st.session_state.selected_degree_courses.append(selected_course)
+            st.rerun()
+
+
+def open_neo4j_visual_sidepanel(html_content):
+    closed_panel_initializer = "[_,S]=vr.useState(!1),[E,O]=vr.useState(300)"
+    open_panel_initializer = "[_,S]=vr.useState(!0),[E,O]=vr.useState(300)"
+    return html_content.replace(closed_panel_initializer, open_panel_initializer, 1)
+
+
+def style_graph_html(html_content):
+    html_content = open_neo4j_visual_sidepanel(html_content)
+    return html_content.replace(
+        "<body>", '<body style="background-color:#000000;">'
+    )
+
+
+def clamp_visual_settings(settings):
+    selected_terms = [
+        term for term in settings.get("selected_terms", []) if term in TERM_OPTIONS
+    ]
+    lookback_years = settings.get("lookback_years")
+    if lookback_years is not None:
+        try:
+            lookback_years = min(max(int(lookback_years), 1), pd.Timestamp.today().year - 2020)
+        except (TypeError, ValueError):
+            lookback_years = None
+
+    return {
+        "avg_recommendation": min(max(int(settings.get("avg_recommendation", 4)), 0), 5),
+        "low_workload": min(max(int(settings.get("low_workload", 2)), 0), 5),
+        "selected_terms": selected_terms,
+        "lookback_years": lookback_years,
+    }
+
+
+def render_node_legend():
+    legend_items = "".join(
+        f"""
+        <div class="legend-item">
+            <span class="legend-swatch" style="background:{color};"></span>
+            <span>{label}</span>
+        </div>
+        """
+        for label, color in NODE_TYPE_COLORS.items()
+    )
+    st.markdown(
+        f"""
+        <style>
+            .node-legend {{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem 1rem;
+                align-items: center;
+                margin: 0.5rem 0 0.75rem;
+                font-size: 0.9rem;
+            }}
+            .legend-item {{
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                white-space: nowrap;
+            }}
+            .legend-swatch {{
+                display: inline-block;
+                width: 0.85rem;
+                height: 0.85rem;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.45);
+            }}
+        </style>
+        <div class="node-legend">{legend_items}</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def cypher_list(values):
+    return "[" + ", ".join(json.dumps(value) for value in values) + "]"
+
+
+def build_guided_query(concentrations, flmb_types, foundations, include_prerequisites=True):
+    query_branches = []
+
+    if concentrations:
+        branch = f"""
+        MATCH path = (c:concentration)-[:INCLUDE*]->(course:Courses)
+        WHERE c.Concentration IN {cypher_list(concentrations)}
+        """
+        if include_prerequisites:
+            branch += """
+        OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
+        """
+        else:
+            branch += """
+        WITH path, null AS prereqPath
+        """
+        branch += """
+        RETURN path, prereqPath, null AS requirement, null AS foundation, null AS rel, null AS course
+        """
+        query_branches.append(branch.strip())
+
+    if flmb_types:
+        branch = f"""
+        MATCH (requirement)-[rel:flmb_requirement]->(course)
+        WHERE requirement.flmb_sub_type IN {cypher_list(flmb_types)}
+        """
+        if include_prerequisites:
+            branch += """
+        OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
+        """
+        else:
+            branch += """
+        WITH requirement, rel, course, null AS prereqPath
+        """
+        branch += """
+        RETURN null AS path, prereqPath, requirement, null AS foundation, rel, course
+        """
+        query_branches.append(branch.strip())
+
+    if foundations:
+        branch = f"""
+        MATCH (foundation)-[rel]->(course)
+        WHERE foundation.foundation IN {cypher_list(foundations)}
+        AND (
+            course:Courses
+            OR course.course_name IS NOT NULL
+        )
+        """
+        if include_prerequisites:
+            branch += """
+        OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
+        """
+        else:
+            branch += """
+        WITH foundation, rel, course, null AS prereqPath
+        """
+        branch += """
+        RETURN null AS path, prereqPath, null AS requirement, foundation, rel, course
+        """
+        query_branches.append(branch.strip())
+
+    if not query_branches:
+        return sample_query_entr_and_finance
+
+    return "\nUNION\n".join(query_branches)
+
+
+def add_query_history(name, query, graph, visual_settings=None, requirement_counts=None):
+    nodes_count, rels_count = compute_graph_counts(graph)
+    query = query.strip()
+    st.session_state.history = [
+        entry for entry in st.session_state.history if entry.get("query") != query
+    ]
+    st.session_state.history.insert(
+        0,
+        {
+            "name": name,
+            "query": query,
+            "nodes": nodes_count,
+            "relationships": rels_count,
+            "ts": time.time(),
+            "visual_settings": visual_settings or DEFAULT_VISUAL_SETTINGS.copy(),
+            "requirement_counts": requirement_counts or {},
+        },
+    )
+    st.session_state.history = st.session_state.history[:12]
+
+
+def render_graph_html(graph, height="800px", visual_settings=None, requirement_counts=None):
+    VG = from_neo4j(graph)
+    visual_settings = clamp_visual_settings(visual_settings or DEFAULT_VISUAL_SETTINGS.copy())
+    requirement_counts = requirement_counts or {}
+
+    for node in VG.nodes:
+        course_name = get_course_name(node)
+        is_multi_requirement_course = (
+            is_course_node(node)
+            and course_name in requirement_counts
+            and requirement_counts[course_name].get("count", 0) > 1
+        )
+        node.properties["legend_type"] = get_node_type(node)
+        if is_course_node(node) and not course_matches_term_filter(
+            node,
+            visual_settings.get("selected_terms", []),
+            visual_settings.get("lookback_years"),
+        ):
+            node.properties["legend_type"] = "Not Offered In Selected Terms"
+        elif is_multi_requirement_course:
+            node.properties["legend_type"] = "Strategic Pick"
+            node.properties["selected_requirement_count"] = requirement_counts[course_name]["count"]
+            node.properties["selected_requirements"] = requirement_counts[course_name]["requirements"]
+
+    VG.color_nodes(
+        property="legend_type",
+        colors=NODE_TYPE_COLORS,
+        color_space=ColorSpace.DISCRETE,
+    )
+    apply_course_node_sizes(VG.nodes, visual_settings)
+
+    html_obj = VG.render(
+        layout="forcedirected",
+        width="100%",
+        height=height,
+    )
+    html_content = html_obj.data if hasattr(html_obj, "data") else html_obj
+    return style_graph_html(html_content)
+
+
+def execute_graph_query(query, name="Query", visual_settings=None, requirement_counts=None):
+    graph = run_query_graph(query)
+    st.session_state.graph = graph
+    st.session_state.visual_settings = clamp_visual_settings(visual_settings or DEFAULT_VISUAL_SETTINGS.copy())
+    st.session_state.requirement_counts = requirement_counts or {}
+    st.session_state.graph_html = render_graph_html(
+        graph,
+        visual_settings=st.session_state.visual_settings,
+        requirement_counts=st.session_state.requirement_counts,
+    )
+    add_query_history(
+        name,
+        query,
+        graph,
+        visual_settings=st.session_state.visual_settings,
+        requirement_counts=st.session_state.requirement_counts,
+    )
+    return graph
+
 if "welcomed" not in st.session_state:
     st.session_state.welcomed = False
 
@@ -174,55 +913,175 @@ else:
     # --- TAB 1: Explore Classes (Neo4j Viz version with sidebar) ---
     with tab1:
         st.title("Explore Classes Available at Chicago Booth")
-        st.caption("""
-                Run a Cypher query, then view the interactive graph below. 
-                   
-                Expand the right sidebar using the button in the top right of the visual to see node data.
-                """)
+        with st.expander("How to use this page", expanded=True):
+            st.markdown(
+                """
+                1. Use **Course Filters** in the sidebar to choose concentrations, requirements, or foundations.
+                2. Click **Show Relationships** to update the class map.
+                3. Use **Course Preferences** to make recommended, lower-workload, or recently offered classes stand out.
+                4. Choose a class above the map and click **Add to Plan** to track degree and concentration progress below.
+
+                Bigger circles are stronger matches for your preferences. Grey classes do not match the selected term availability.
+                """
+            )
 
         # --- Initialize session state ---
         if "graph" not in st.session_state:
             try:
                 st.session_state.graph = run_query_graph(sample_query_entr_and_finance)
+                st.session_state.visual_settings = DEFAULT_VISUAL_SETTINGS.copy()
+                st.session_state.requirement_counts = fetch_selected_requirement_counts(
+                    ["Entrepreneurship", "Finance"],
+                    [],
+                    [],
+                )
+                st.session_state.graph_html = render_graph_html(
+                    st.session_state.graph,
+                    visual_settings=st.session_state.visual_settings,
+                    requirement_counts=st.session_state.requirement_counts,
+                )
             except Exception:
                 st.session_state.graph = None
+                st.session_state.graph_html = None
+                st.session_state.visual_settings = DEFAULT_VISUAL_SETTINGS.copy()
+                st.session_state.requirement_counts = {}
         if "history" not in st.session_state:
             st.session_state.history = []
         if "node_details_by_id" not in st.session_state:
             st.session_state.node_details_by_id = {}
+        if "visual_settings" not in st.session_state:
+            st.session_state.visual_settings = DEFAULT_VISUAL_SETTINGS.copy()
+        st.session_state.visual_settings = clamp_visual_settings(st.session_state.visual_settings)
+        if "requirement_counts" not in st.session_state:
+            st.session_state.requirement_counts = {}
 
         default_query = sample_query_entr_and_finance
 
-        # --- Sidebar: Cypher Query ---
-        st.sidebar.write("""
-            To learn more about Cypher queries, refer to the 
-            [Neo4j documentation](https://neo4j.com/product/cypher-graph-query-language/).
-        """
+        # --- Sidebar: Query Controls ---
+        st.sidebar.header("Course Filters")
+
+        concentration_options = load_concentrations()
+        default_concentrations = [
+            value for value in ["Entrepreneurship", "Finance"] if value in concentration_options
+        ]
+        selected_concentrations = st.sidebar.multiselect(
+            "Concentrations",
+            concentration_options,
+            default=default_concentrations,
         )
-        query = st.sidebar.text_area("Enter Cypher Query", default_query, height=200)
+        selected_flmb_types = st.sidebar.multiselect(
+            "FLMB requirement types",
+            load_flmb_requirement_types(),
+        )
+        selected_foundations = st.sidebar.multiselect(
+            "Foundations",
+            load_foundations(),
+        )
+        include_prerequisites = st.sidebar.checkbox(
+            "Include prerequisite chains",
+            value=True,
+        )
 
-        if st.sidebar.button("Run Query"):
-            try:
-                graph = run_query_graph(query)
-                st.session_state.graph = graph
+        generated_query = build_guided_query(
+            selected_concentrations,
+            selected_flmb_types,
+            selected_foundations,
+            include_prerequisites,
+        )
+        builder_signature = (
+            tuple(selected_concentrations),
+            tuple(selected_flmb_types),
+            tuple(selected_foundations),
+            include_prerequisites,
+        )
+        if st.session_state.get("query_builder_signature") != builder_signature:
+            st.session_state.query_builder_signature = builder_signature
+            st.session_state.query_text = generated_query
 
-                # --- Update query history ---
-                nodes_count = len(graph.nodes)
-                rels_count = len(graph.relationships)
-                if not any(h.get("query") == query for h in st.session_state.history):
-                    st.session_state.history.insert(
-                        0,
-                        {
-                            "query": query.strip(),
-                            "nodes": nodes_count,
-                            "relationships": rels_count,
-                            "ts": time.time(),
-                        },
+        with st.sidebar.form("graph_query_form"):
+            with st.expander("Cypher Query", expanded=False):
+                query = st.text_area(
+                    "Edit generated Cypher",
+                    key="query_text",
+                    height=260,
+                    label_visibility="collapsed",
+                )
+            run_query = st.form_submit_button("Show Relationships", use_container_width=True)
+
+        st.sidebar.subheader("Course Preferences")
+        recommendation_weight = st.sidebar.slider(
+            "Average recommendation",
+            min_value=0,
+            max_value=5,
+            value=st.session_state.visual_settings.get("avg_recommendation", 4),
+            step=1,
+        )
+        workload_weight = st.sidebar.slider(
+            "Low hours outside class",
+            min_value=0,
+            max_value=5,
+            value=st.session_state.visual_settings.get("low_workload", 2),
+            step=1,
+        )
+        selected_terms = st.sidebar.multiselect(
+            "Terms offered",
+            TERM_OPTIONS,
+            default=st.session_state.visual_settings.get("selected_terms", []),
+        )
+        max_lookback_years = pd.Timestamp.today().year - 2020
+        lookback_options = [None] + list(range(1, max_lookback_years + 1))
+        lookback_labels = {
+            None: "Any year",
+            **{
+                years: f"Past {years} year" if years == 1 else f"Past {years} years"
+                for years in range(1, max_lookback_years + 1)
+            },
+        }
+        current_lookback_years = st.session_state.visual_settings.get("lookback_years")
+        if current_lookback_years not in lookback_options:
+            current_lookback_years = None
+        lookback_years = st.sidebar.selectbox(
+            "Lookback",
+            lookback_options,
+            index=lookback_options.index(current_lookback_years),
+            format_func=lambda value: lookback_labels[value],
+        )
+        current_visual_settings = {
+            "avg_recommendation": recommendation_weight,
+            "low_workload": workload_weight,
+            "selected_terms": selected_terms,
+            "lookback_years": lookback_years,
+        }
+        if st.session_state.visual_settings != current_visual_settings:
+            st.session_state.visual_settings = current_visual_settings
+            st.session_state.graph_html = None
+
+        if run_query:
+            if not query.strip():
+                st.sidebar.warning("Enter a Cypher query to run.")
+            else:
+                try:
+                    selected_groups = []
+                    if selected_concentrations:
+                        selected_groups.append(f"Concentrations: {', '.join(selected_concentrations)}")
+                    if selected_flmb_types:
+                        selected_groups.append(f"FLMB: {', '.join(selected_flmb_types)}")
+                    if selected_foundations:
+                        selected_groups.append(f"Foundations: {', '.join(selected_foundations)}")
+                    query_name = " | ".join(selected_groups) if selected_groups else "Custom Cypher Query"
+                    requirement_counts = fetch_selected_requirement_counts(
+                        selected_concentrations,
+                        selected_flmb_types,
+                        selected_foundations,
                     )
-                    st.session_state.history = st.session_state.history[:12]
-
-            except Exception as e:
-                st.sidebar.error(f"Query failed: {e}")
+                    execute_graph_query(
+                        query,
+                        query_name,
+                        visual_settings=current_visual_settings,
+                        requirement_counts=requirement_counts,
+                    )
+                except Exception as e:
+                    st.sidebar.error(f"Query failed: {e}")
 
         # --- Sidebar: Query History ---
         st.sidebar.subheader("Query History")
@@ -237,8 +1096,12 @@ else:
                     st.code(past_query, language="cypher")
                     if st.button("Run again", key=f"history_run_{i}"):
                         try:
-                            graph = run_query_graph(past_query)
-                            st.session_state.graph = graph
+                            execute_graph_query(
+                                past_query,
+                                name,
+                                visual_settings=current_visual_settings,
+                                requirement_counts=entry.get("requirement_counts", {}),
+                            )
                         except Exception as e:
                             st.sidebar.error(f"Query failed: {e}")
         else:
@@ -322,32 +1185,19 @@ else:
         # --- Main: Render Neo4j Viz graph as HTML in Streamlit ---
         if st.session_state.graph:
             try:
-                VG = from_neo4j(st.session_state.graph)
-
-                VG.color_nodes(
-                    field="caption",
-                    colors=[
-                        "#FF7F7F",          # pale red
-                        "#7FFFD4",          # aquamarine
-                        "#FFD700",          # gold
-                        "#9370DB"           # medium purple
-                    ],
-                    color_space=ColorSpace.DISCRETE
-                )
-            
-                html_obj = VG.render(
-                    layout="forcedirected",
-                    width="100%",  # wider than height
-                    height="800px",  # shorter than width
-                )
-
-                # `html_obj` is IPython.display.HTML
-                html_content = html_obj.data if hasattr(html_obj, "data") else html_obj
-                html_content = html_content.replace(
-                    "<body>", '<body style="background-color:#000000;">'
-                )
-
-                components.html(html_content, height=700, width="100%", scrolling=True)
+                if not st.session_state.get("graph_html"):
+                    st.session_state.graph_html = render_graph_html(
+                        st.session_state.graph,
+                        visual_settings=st.session_state.visual_settings,
+                        requirement_counts=st.session_state.requirement_counts,
+                    )
+                render_node_legend()
+                _, add_to_plan_col = st.columns([3, 2])
+                with add_to_plan_col:
+                    render_add_to_plan_controls()
+                st.session_state.graph_html = style_graph_html(st.session_state.graph_html)
+                components.html(st.session_state.graph_html, height=700, width="100%", scrolling=True)
+                render_degree_progress_panel()
 
             except Exception as e:
                 st.error(f"Failed to render graph: {e}")
@@ -466,26 +1316,8 @@ else:
                     )
 
                     if graph and graph.nodes:
-                        VG = from_neo4j(graph)
-
-                        VG.color_nodes(
-                            field="caption",
-                            colors=[
-                                "#FF7F7F",  # pale red
-                                "#7FFFD4",  # aquamarine
-                                "#FFD700",  # gold
-                                "#9370DB"   # medium purple
-                            ],
-                            color_space=ColorSpace.DISCRETE
-                        )
-
-                        html_obj = VG.render(
-                            layout="forcedirected",
-                            width="100%",
-                            height="700px",
-                        )
-                        html_content = html_obj.data if hasattr(html_obj, "data") else html_obj
-                        html_content = html_content.replace("<body>", '<body style="background-color:#000000;">')
+                        html_content = render_graph_html(graph, height="700px")
+                        render_node_legend()
                         components.html(html_content, height=700, width="100%", scrolling=True)
                     else:
                         st.info("No suggested path could be generated.")

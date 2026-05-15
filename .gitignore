@@ -31,6 +31,15 @@ env/
 # Streamlit secrets
 # ----------------------
 .streamlit/secrets.toml
+ui/.streamlit/secrets.toml
+
+# ----------------------
+# Local-only project context
+# ----------------------
+AGENTS.md
+agents.md
+data/degree_requirements
+data/degree_requirements*
 
 # ----------------------
 # OS files
