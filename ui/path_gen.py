@@ -28,10 +28,10 @@ def generate_suggested_path(concentrations, selected_courses, driver, n_quarters
 
     # --- Fetch all courses for selected concentrations ---
     query = f"""
-    MATCH (c:concentration)-[:INCLUDE*]->(course:Courses)
-    WHERE c.Concentration IN {concentrations}
-    OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
-    RETURN DISTINCT course.course_name AS course_name, collect(pre.course_name) AS prerequisites
+    MATCH (course:Course)-[:BELONGS_TO*]->(c:Concentration)
+    WHERE c.concentration IN {concentrations}
+    OPTIONAL MATCH prereqPath = (course)-[:REQUIRES*]->(pre:Course)
+    RETURN DISTINCT course.courseName AS course_name, collect(pre.courseName) AS prerequisites
     """
 
     with driver.session() as session:

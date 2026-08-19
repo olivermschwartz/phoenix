@@ -117,9 +117,9 @@ def load_concentration_requirements_map():
     return df
 
 sample_query_flmb_requirements = """
-MATCH (n)-[r:flmb_requirement]->(b)
+MATCH (n:Course)-[r:HAS_FLMB_SUB_TYPE]->(b:FlmbSubType)
 RETURN n, r, b
-""".strip() 
+""".strip()
 
 sample_query_all = """
 MATCH (n)-[r]->(m)
@@ -128,9 +128,9 @@ LIMIT 25
 """.strip()
 
 sample_query_entr_and_finance = """
-MATCH path = (c:concentration)-[:INCLUDE*]->(p:Courses)
-WHERE c.Concentration = "Finance" OR c.Concentration = "Entrepreneurship"
-OPTIONAL MATCH prereqPath = (p)<-[:UNLOCKS*]-(pre:Courses)
+MATCH path = (p:Course)-[:BELONGS_TO*]->(c:Concentration)
+WHERE c.concentration = "Finance" OR c.concentration = "Entrepreneurship"
+OPTIONAL MATCH prereqPath = (p)-[:REQUIRES*]->(pre:Course)
 RETURN path, prereqPath
 """.strip()
 
@@ -230,11 +230,16 @@ def visible_courses_from_graph(graph):
     for node in list(graph.nodes):
         labels = node_to_labels(node)
         properties = node_to_properties(node)
-        if "Courses" not in labels and "course_name" not in properties:
+        is_temp_suggested_node = "course_name" in properties
+        if "Course" not in labels and not is_temp_suggested_node:
             continue
 
-        course_number = properties.get("course_number")
-        course_name = properties.get("course_name")
+        if is_temp_suggested_node:
+            course_number = properties.get("course_number")
+            course_name = properties.get("course_name")
+        else:
+            course_number = properties.get("courseNumber")
+            course_name = properties.get("courseName")
         if course_number is None or not course_name:
             continue
 
@@ -252,11 +257,11 @@ def is_course_node(node):
     labels = node.properties.get("labels", [])
     if not isinstance(labels, list):
         labels = [labels]
-    return "Courses" in labels
+    return "Course" in labels
 
 
 def get_course_name(node):
-    return node.properties.get("course_name")
+    return node.properties.get("courseName")
 
 
 def get_node_type(node):
@@ -264,13 +269,13 @@ def get_node_type(node):
     if not isinstance(labels, list):
         labels = [labels]
 
-    if "Courses" in labels:
+    if "Course" in labels:
         return "Course"
-    if "concentration" in labels:
+    if "Concentration" in labels:
         return "Concentration"
     if any(str(label).startswith("SuggestedCourse_") for label in labels):
         return "Suggested Path"
-    if "flmb_sub_type" in node.properties:
+    if "flmbSubType" in node.properties:
         return "FLMB Requirement"
     if "foundation" in node.properties:
         return "Foundation"
@@ -312,7 +317,7 @@ def course_matches_term_filter(node, selected_terms, lookback_years):
     min_year = current_year - lookback_years if lookback_years is not None else None
     selected_terms = set(selected_terms)
 
-    for offering in parse_terms_offered(node.properties.get("terms_offered")):
+    for offering in parse_terms_offered(node.properties.get("termsOffered")):
         if offering["term"] not in selected_terms:
             continue
         if min_year is not None and offering["year"] < min_year:
@@ -350,8 +355,8 @@ def apply_course_node_sizes(nodes, visual_settings):
     recommendation_weight = visual_settings.get("avg_recommendation", 0)
     workload_weight = visual_settings.get("low_workload", 0)
     total_weight = recommendation_weight + workload_weight
-    recommendation_scores = normalize_values(course_nodes, "avg_recommendation", higher_is_better=True)
-    workload_scores = normalize_values(course_nodes, "avg_hours_of_work", higher_is_better=False)
+    recommendation_scores = normalize_values(course_nodes, "avgRecommendation", higher_is_better=True)
+    workload_scores = normalize_values(course_nodes, "avgHoursOfWork", higher_is_better=False)
 
     for node in nodes:
         if not is_course_node(node):
@@ -380,9 +385,9 @@ def fetch_selected_requirement_counts(concentrations, flmb_types, foundations):
         if concentrations:
             result = session.run(
                 """
-                MATCH (c:concentration)-[:INCLUDE*]->(course:Courses)
-                WHERE c.Concentration IN $concentrations
-                RETURN course.course_name AS course_name, collect(DISTINCT c.Concentration) AS requirements
+                MATCH (course:Course)-[:BELONGS_TO*]->(c:Concentration)
+                WHERE c.concentration IN $concentrations
+                RETURN course.courseName AS course_name, collect(DISTINCT c.concentration) AS requirements
                 """,
                 {"concentrations": concentrations},
             )
@@ -393,9 +398,9 @@ def fetch_selected_requirement_counts(concentrations, flmb_types, foundations):
         if flmb_types:
             result = session.run(
                 """
-                MATCH (requirement)-[:flmb_requirement]->(course:Courses)
-                WHERE requirement.flmb_sub_type IN $flmb_types
-                RETURN course.course_name AS course_name, collect(DISTINCT requirement.flmb_sub_type) AS requirements
+                MATCH (course:Course)-[:HAS_FLMB_SUB_TYPE]->(requirement:FlmbSubType)
+                WHERE requirement.flmbSubType IN $flmb_types
+                RETURN course.courseName AS course_name, collect(DISTINCT requirement.flmbSubType) AS requirements
                 """,
                 {"flmb_types": flmb_types},
             )
@@ -406,9 +411,9 @@ def fetch_selected_requirement_counts(concentrations, flmb_types, foundations):
         if foundations:
             result = session.run(
                 """
-                MATCH (foundation)-[]->(course:Courses)
+                MATCH (course:Course)-[:SATISFIES_FOUNDATION]->(foundation:Foundation)
                 WHERE foundation.foundation IN $foundations
-                RETURN course.course_name AS course_name, collect(DISTINCT foundation.foundation) AS requirements
+                RETURN course.courseName AS course_name, collect(DISTINCT foundation.foundation) AS requirements
                 """,
                 {"foundations": foundations},
             )
@@ -723,12 +728,12 @@ def build_guided_query(concentrations, flmb_types, foundations, include_prerequi
 
     if concentrations:
         branch = f"""
-        MATCH path = (c:concentration)-[:INCLUDE*]->(course:Courses)
-        WHERE c.Concentration IN {cypher_list(concentrations)}
+        MATCH path = (course:Course)-[:BELONGS_TO*]->(c:Concentration)
+        WHERE c.concentration IN {cypher_list(concentrations)}
         """
         if include_prerequisites:
             branch += """
-        OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
+        OPTIONAL MATCH prereqPath = (course)-[:REQUIRES*]->(pre:Course)
         """
         else:
             branch += """
@@ -741,12 +746,12 @@ def build_guided_query(concentrations, flmb_types, foundations, include_prerequi
 
     if flmb_types:
         branch = f"""
-        MATCH (requirement)-[rel:flmb_requirement]->(course)
-        WHERE requirement.flmb_sub_type IN {cypher_list(flmb_types)}
+        MATCH (course:Course)-[rel:HAS_FLMB_SUB_TYPE]->(requirement:FlmbSubType)
+        WHERE requirement.flmbSubType IN {cypher_list(flmb_types)}
         """
         if include_prerequisites:
             branch += """
-        OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
+        OPTIONAL MATCH prereqPath = (course)-[:REQUIRES*]->(pre:Course)
         """
         else:
             branch += """
@@ -759,16 +764,12 @@ def build_guided_query(concentrations, flmb_types, foundations, include_prerequi
 
     if foundations:
         branch = f"""
-        MATCH (foundation)-[rel]->(course)
+        MATCH (course:Course)-[rel:SATISFIES_FOUNDATION]->(foundation:Foundation)
         WHERE foundation.foundation IN {cypher_list(foundations)}
-        AND (
-            course:Courses
-            OR course.course_name IS NOT NULL
-        )
         """
         if include_prerequisites:
             branch += """
-        OPTIONAL MATCH prereqPath = (course)<-[:UNLOCKS*]-(pre:Courses)
+        OPTIONAL MATCH prereqPath = (course)-[:REQUIRES*]->(pre:Course)
         """
         else:
             branch += """
@@ -1255,13 +1256,13 @@ else:
                     # --- Query Neo4j for candidate courses ---
                     # Matches courses under selected concentrations
                     conc_query = """
-                    MATCH (c:concentration)-[:INCLUDE*]->(course:Courses)
-                    WHERE c.Concentration IN $concentrations
+                    MATCH (course:Course)-[:BELONGS_TO*]->(c:Concentration)
+                    WHERE c.concentration IN $concentrations
                     RETURN DISTINCT course
                     """
                     with driver.session() as session:
                         result = session.run(conc_query, {"concentrations": concentrations})
-                        candidate_courses = [record["course"]["course_name"] for record in result]
+                        candidate_courses = [record["course"]["courseName"] for record in result]
 
                     # Exclude courses already taken
                     candidate_courses = [c for c in candidate_courses if c not in taken_courses]
